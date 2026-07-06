@@ -8,38 +8,28 @@ PREFIJO = "BD - "
 CODIGO_PAIS = "+591"
 
 def limpiar_texto(valor):
-    """Convierte NaN en cadena vacía y elimina espacios dobles."""
     if pd.isna(valor):
         return ""
 
     texto = str(valor).strip()
-
     texto = re.sub(r"\s+", " ", texto)
-
     return texto
 
 
 def limpiar_numero(numero):
-    """
-    Limpia un teléfono y devuelve un formato +591XXXXXXXX.
-    """
-
     if pd.isna(numero):
         return None
 
     numero = str(numero)
 
-    # Mantener solamente dígitos
     digitos = re.sub(r"\D", "", numero)
 
     if len(digitos) == 0:
         return None
 
-    # Ya tiene código de Bolivia
     if digitos.startswith("591"):
         telefono = "+" + digitos
 
-    # Celular boliviano
     elif len(digitos) == 8:
         telefono = CODIGO_PAIS + digitos
 
@@ -153,9 +143,7 @@ for _, fila in df.iterrows():
         continue
 
     nombre = PREFIJO + nombre
-
     vcards.append(crear_vcard(nombre, telefono))
-
     exportados += 1
 
 # GUARDAR
@@ -170,7 +158,7 @@ print("=" * 60)
 
 print(f"Archivo leído       : {ARCHIVO_EXCEL}")
 print(f"Hoja utilizada      : {hoja}")
-print(f"Procesados          : {procesados}")
+print(f"Filas Procesadas          : {procesados}")
 print(f"Exportados          : {exportados}")
 print(f"Ignorados           : {ignorados}")
 print(f"Duplicados          : {duplicados}")
