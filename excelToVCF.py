@@ -158,7 +158,7 @@ print("=" * 60)
 
 print(f"Archivo leído       : {ARCHIVO_EXCEL}")
 print(f"Hoja utilizada      : {hoja}")
-print(f"Filas Procesadas          : {procesados}")
+print(f"Filas Procesadas    : {procesados}")
 print(f"Exportados          : {exportados}")
 print(f"Ignorados           : {ignorados}")
 print(f"Duplicados          : {duplicados}")
